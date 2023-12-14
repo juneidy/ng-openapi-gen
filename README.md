@@ -2,6 +2,10 @@
 
 This a fork from [cyclosproject/ng-openapi-gen](https://github.com/cyclosproject/ng-openapi-gen).
 
+Changes:
+
+* Merged [#311](https://github.com/cyclosproject/ng-openapi-gen/pull/311)
+
 # ng-openapi-gen: An OpenAPI 3 code generator for Angular
 
 ![Build status](https://github.com/cyclosproject/ng-openapi-gen/workflows/build/badge.svg)
