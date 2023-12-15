@@ -5,6 +5,7 @@ This a fork from [cyclosproject/ng-openapi-gen](https://github.com/cyclosproject
 Changes:
 
 * Merged [#311](https://github.com/cyclosproject/ng-openapi-gen/pull/311)
+* Addressed [#309](https://github.com/cyclosproject/ng-openapi-gen/issues/309)
 
 # ng-openapi-gen: An OpenAPI 3 code generator for Angular
 
