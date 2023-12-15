@@ -35,11 +35,17 @@ export abstract class GenType {
   constructor(
     public name: string,
     typeNameTransform: (typeName: string, options: Options) => string,
-    public options: Options) {
+    public options: Options,
+    fileNameTransform?: (typeName: string, options: Options) => string
+  ) {
 
     this.typeName = typeNameTransform(name, options);
     this.namespace = namespace(name);
-    this.fileName = fileName(this.typeName);
+    this.fileName = fileName(
+      fileNameTransform
+        ? fileNameTransform(name, options)
+        : this.typeName
+    );
     this.qualifiedName = this.typeName;
     if (this.namespace) {
       this.fileName = this.namespace + '/' + this.fileName;
