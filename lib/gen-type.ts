@@ -1,7 +1,7 @@
 import { ReferenceObject, SchemaObject } from 'openapi3-ts';
 import { fileName, namespace, simpleName, typeName } from './gen-utils';
 import { Importable } from './importable';
-import { Import, Imports } from './imports';
+import { Import, Imports, ImportsCollector } from './imports';
 import { Options } from './options';
 
 /**
@@ -27,7 +27,7 @@ export abstract class GenType {
   pathToRoot: string;
 
   imports: Import[];
-  private _imports: Imports;
+  private _imports: ImportsCollector;
 
   additionalDependencies: string[];
   private _additionalDependencies = new Set<string>();
@@ -51,7 +51,7 @@ export abstract class GenType {
       this.fileName = this.namespace + '/' + this.fileName;
       this.qualifiedName = typeName(this.namespace) + this.typeName;
     }
-    this._imports = new Imports(options);
+    this._imports = new (options.importsClass ?? Imports)(options);
   }
 
   protected addImport(param: string | Importable | null | undefined) {

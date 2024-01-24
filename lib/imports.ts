@@ -30,10 +30,20 @@ export class Import implements Importable {
   }
 }
 
+export interface ImportsConstructor {
+  new (options: Options): ImportsCollector;
+}
+
+export interface ImportsCollector {
+  get size(): number;
+  add(param: string | Importable): void;
+  toArray(): Import[];
+}
+
 /**
  * Manages the model imports to be added to a generated file
  */
-export class Imports {
+export class Imports implements ImportsCollector {
   private _imports = new Map<string, Import>();
 
   constructor(private options: Options) {

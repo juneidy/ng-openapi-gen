@@ -1,6 +1,7 @@
+import { ImportsConstructor } from './imports';
 
 /** Options used by ng-openapi-gen */
-export interface Options {
+interface CmdOptions {
 
   /** The input file or URL to the OpenAPI 3 specification, JSON or YAML, local file or URL */
   input: string;
@@ -120,4 +121,12 @@ export interface Options {
 
   /** When true, no verbose output will be displayed */
   silent?: boolean;
+
+  /** Use this external model path to reference externally generated models */
+  externalModelPath?: string;
+}
+
+export interface Options extends CmdOptions {
+  /** Custom imports class to be used by GenType */
+  importsClass?: ImportsConstructor;
 }
